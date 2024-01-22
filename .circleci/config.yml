@@ -1,7 +1,7 @@
 jobs:
   build:
     docker:
-      - image: cimg/node:21.6.0
+      - image: cimg/base:current
     working_directory: ~/repo
     steps:
       # Checkout the code from the branch into the working_directory
