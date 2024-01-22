@@ -28,5 +28,5 @@ jobs:
       # run tests!
       - run: yarn test    
       - aws-s3/sync:
-          from: bucket
+          from: .
           to: 's3://startercicd.com'
