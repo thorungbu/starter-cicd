@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --no-cache",
     "start": "webpack-dev-server --mode=development --progress --env NODE_ENV=development",
-    "build": "webpack --mode=production --progress --env NODE_ENV=production"
+    "build": "webpack --mode=production --progress --env NODE_ENV=production",
+    "deploy": "yarn build && aws s3 sync build/ s3://startercicd.com--delete"
   },
   "author": "",
   "license": "ISC",
