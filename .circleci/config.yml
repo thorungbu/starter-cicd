@@ -1,8 +1,8 @@
+version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/base:current
-    working_directory: ~/repo
+      - image: cimg/node:21.6.0
     steps:
       # Checkout the code from the branch into the working_directory
       - checkout
@@ -22,7 +22,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: yarn test
+      - run: yarn test    
+      - run: 
+          name: Install awscli
+          command: sudo pip install awscli
       - run: aws --version
       - run: aws s3 ls
       - run: yarn run deploys
