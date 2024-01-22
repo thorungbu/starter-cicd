@@ -29,4 +29,4 @@ jobs:
       - run: yarn test    
       - aws-s3/sync:
           from: .
-          to: 's3://startercicd.com'
+          to: 'http://startercicd.com.s3-website-ap-southeast-1.amazonaws.com'
