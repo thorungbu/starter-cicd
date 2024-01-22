@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@3.1.1 # use the AWS S3 orb in your 
+
 jobs:
   build:
     docker:
@@ -23,9 +27,9 @@ jobs:
         
       # run tests!
       - run: yarn test    
-      - run: 
-          name: Install awscli
-          command: sudo pip install awscli
-      - run: aws --version
-      - run: aws s3 ls
-      - run: yarn run deploys
+      - aws-s3/sync:
+          from: bucket
+          to: 's3://startercicd.com'
+          arguments: | # Optional arguments
+            --acl public-read \
+            --cache-control "max-age=86400"
